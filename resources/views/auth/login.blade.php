@@ -8,7 +8,7 @@
     <meta name="keywords" content="Labor Localization" />
     <meta name="description" content="..." />
     <meta name="robots" content="noindex,nofollow" />
-    <title>Login</title>
+    <title>{{ $title }}</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/niceadmin/" />
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png" />
     <link href="{{ asset('assets/css/style.min.css') }}" rel="stylesheet" />
