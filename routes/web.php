@@ -21,3 +21,4 @@ Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'index']);
 
 
 Route::get('/dashboard', [App\Http\Controllers\Main\DashboardController::class, 'index']);
+Route::get('/establishments', [App\Http\Controllers\Main\EstablishmentController::class, 'index']);

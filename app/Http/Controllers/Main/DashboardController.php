@@ -9,6 +9,7 @@ class DashboardController extends Controller
 {
     public function index(){
 
-        echo 'Dashboard';
+        $data['title'] = 'Dashboard';
+        return view('main.contents.dashboard.dashboard_content')->with($data);
     }
 }

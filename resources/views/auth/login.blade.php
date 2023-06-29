@@ -18,7 +18,7 @@
 <body>
     <div class="main-wrapper">
 
-        @include('main.contents.pre_loader')
+        @include('main.includes.components.pre_loader')
         
         <div class="
           auth-wrapper
@@ -27,12 +27,12 @@
           justify-content-center
           align-items-center
         " style="
-          background: url({{asset('assets/images/peso_w.jpg')}})
+          background: url({{asset('assets/images/back.svg')}})
             no-repeat center center;
           background-size: cover;
          
         ">
-            <div class="auth-box p-4  bg-white rounded"  style="height: 350px;width: 600px;" >
+            <div class="auth-box p-4  bg-white rounded"  style="height: 350px;width: 600px; " >
                 <div id="loginform">
                     <div class="logo">
                         <h3 class="box-title mb-3 text-center">Sign In</h3>
@@ -40,15 +40,15 @@
                     <!-- Form -->
                     <div class="row">
                         <div class="col-12">
-                            <form class="form-horizontal mt-3 form-material" id="loginform" action="index.html">
+                            <form class="form-horizontal mt-3 form-material" id="loginform" >
                                 <div class="form-group mb-3">
                                     <div class="">
-                                        <input class="form-control" type="text" required="" placeholder="Username" />
+                                        <input class="form-control" type="text"  placeholder="Username" />
                                     </div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <div class="">
-                                        <input class="form-control" type="password" required="" placeholder="Password" />
+                                        <input class="form-control" type="password"  placeholder="Password" />
                                     </div>
                                 </div>
                                 
@@ -95,10 +95,11 @@
     <script>
       $(".preloader").fadeOut();
      
-      $("#to-recover").on("click", function () {
-        $("#loginform").slideUp();
-        $("#recoverform").fadeIn();
-      });
+    $('#loginform').on('submit', function (e){
+      e.preventDefault();
+
+      window.location.href = '{{url("/dashboard")}}';
+    });
 
 
 
