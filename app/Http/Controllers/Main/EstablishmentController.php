@@ -12,4 +12,11 @@ class EstablishmentController extends Controller
         $data['title'] = 'Establishments';
         return view('main.contents.establishments.establishment_content')->with($data);
     }
+
+
+    public function add(){
+
+        $data['title'] = 'Add Establishment';
+        return view('main.contents.establishments.pages.add_page.add_establishment')->with($data);
+    }
 }
