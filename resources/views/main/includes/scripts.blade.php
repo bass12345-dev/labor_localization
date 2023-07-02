@@ -33,4 +33,5 @@
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
     <script src="{{ asset('assets/vendor/datatables/js/datatable-advanced.init.js') }}"></script>
 
-    <script src="{{ asset('assets/js/vlidation.js') }}"></script>
+    <script src="{{ asset('assets/js/validation.js') }}"></script>
+

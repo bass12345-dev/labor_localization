@@ -30,9 +30,38 @@
    <div class="row">
       <div class="col-12">
          <div class="card">
-            <form class="form-horizontal">
+            
+            <form class="form-horizontal" id="add_establishment_form">
                <div class="card-body">
                   <h4 class="card-title">Establishment Information</h4>
+                  <div
+                      class="
+                        alert alert-primary
+                        alert-dismissible
+                        fade
+                        show
+                      "
+                      role="alert"
+                    >
+                      <div
+                        class="
+                          d-flex
+                          align-items-center
+                        "
+                      >
+                        <i
+                          data-feather="check"
+                          class="fill-white feather-sm me-2"
+                        ></i>
+                        Added Succesfully
+                      </div>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                      ></button>
+                    </div>
                     <div class="mb-3 row">
                      <label
                         for="cono1"
@@ -43,8 +72,10 @@
                             <input
                             type="text"
                             class="form-control"
-                            id="cono1"
+                            name="es_code"
+                            id="es_code"
                             placeholder="Establishment Code Here"
+                            required=""
                             />
                         </div>
                     </div>
@@ -58,8 +89,10 @@
                             <input
                             type="text"
                             class="form-control"
-                            id="cono1"
+                            name="es_name"
+                            id="es_name"
                             placeholder="Establishment Name Here"
+                            required=""
                             />
                         </div>
                     </div>
@@ -73,8 +106,10 @@
                             <input
                             type="text"
                             class="form-control"
-                            id="cono1"
+                            name="es_address"
+                            id="es_address"
                             placeholder="Address Here"
+
                             />
                         </div>
                     </div>
@@ -86,9 +121,10 @@
                         >
                         <div class="col-sm-9">
                             <input
-                            type="text"
+                            type="number"
                             class="form-control"
-                            id="cono1"
+                            name="es_contact"
+                            id="es_contact"
                             placeholder="Contact Number Here"
                             />
                         </div>
@@ -103,7 +139,8 @@
                             <input
                             type="text"
                             class="form-control"
-                            id="cono1"
+                            name="es_email"
+                            id="es_email"
                             placeholder="Email Here"
                             />
                         </div>
@@ -118,7 +155,8 @@
                             <input
                             type="text"
                             class="form-control"
-                            id="cono1"
+                            name="es_authorized_personnel"
+                            id="es_authorized_personnel"
                             placeholder="Authorized Personnel Here"
                             />
                         </div>
@@ -133,7 +171,8 @@
                             <input
                             type="text"
                             class="form-control"
-                            id="cono1"
+                            name="es_position"
+                            id="es_position"
                             placeholder="Position Here"
                             />
                         </div>
@@ -171,4 +210,35 @@
    </div>
 </div>
                 
+@endsection
+
+@section('script')
+<script>
+
+$('#add_establishment_form').on('submit', function(e){
+    e.preventDefault();
+
+
+    $.ajax({
+            type: "POST",
+            url: base_url + 'api/register',
+            data:  $("#add_establishment_form").serialize(),
+            cache: false,
+            dataType: 'json',
+            success: function(data)
+            {            
+                             
+            },
+            error: function(xhr) 
+            { // if error occured
+               alert("Error occured.please try again");
+                                   
+            },
+
+
+         });
+   
+
+});
+</script>
 @endsection

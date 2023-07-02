@@ -25,3 +25,5 @@ Route::get('/dashboard', [App\Http\Controllers\Main\DashboardController::class, 
 //Establishments
 Route::get('/establishments', [App\Http\Controllers\Main\EstablishmentController::class, 'index']);
 Route::get('/establishments/add', [App\Http\Controllers\Main\EstablishmentController::class, 'add']);
+
+Route::post('/', 'App\Http\Controllers\Auth\LoginController@verify');
