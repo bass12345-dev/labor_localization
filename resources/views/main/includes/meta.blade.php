@@ -5,4 +5,5 @@
 <meta name="keywords" content="Labor Localization" />
 <meta name="description" content="Labor Localization" />
 <meta name="robots" content="noindex,nofollow" />
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <title>@yield('title')</title>
