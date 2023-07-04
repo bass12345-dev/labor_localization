@@ -7,7 +7,8 @@
                <!-- <button class="btn btn-primary float-end "  data-bs-toggle="modal"
                   data-bs-target="#samedata-modal"
                   data-bs-whatever="@mdo">Add</button> -->
-               <a href="{{ url('/establishments/add')}}" class="btn btn-primary float-end "  >Add</a>
+               <a href="{{ url('/establishments/add')}}" class="btn btn-primary float-end"  >Add</a>
+               <a href="{{ url('/establishments/add')}}" class="btn btn-danger float-end " style="margin-right: 5px;"  >Delete</a>
             </div>
             <div class="card-body">
                <div class="table-responsive">
@@ -16,14 +17,16 @@
                      class="
                      table table-striped table-bordered
                      display
-                     text-nowrap
+                     
                      "
+                     style="width: 100%;"
                      >
-                     <thead>
+                     <thead class="text-nowrap bg-info text-white">
                         <tr>
+                           <th></th>
                            <th>Establishment Code</th>
                            <th>Establishment Name</th>
-                           
+                           <th>Actions</th>
                         </tr>
                      </thead>
                   </table>

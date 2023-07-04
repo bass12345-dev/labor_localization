@@ -19,6 +19,13 @@ $("#file_export").DataTable({
         data: null, 
         render: function (data, type, row) 
         { 
+          return '<input type="checkbox"> '; 
+        } 
+      }, 
+      { 
+        data: null, 
+        render: function (data, type, row) 
+        { 
           return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_code']+'</span>'; 
         } 
       }, 
@@ -28,6 +35,20 @@ $("#file_export").DataTable({
           return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_name']+'</span>'; 
         } 
       },
+      {
+        
+        data: null,
+        render: function (data, type, row) {
+            return    '<a href="javascript:;" class="text-secondary " >\
+                                <i class="mdi mdi-pencil" style="font-size: 25px;"></i>\
+                            </a> \
+                            <a href="javascript:;" class="text-danger " >\
+                                <i class="mdi mdi-eye" style="font-size: 25px;"></i>\
+                            </a>';
+        }
+
+    },
+      
     ]
   });
   $(

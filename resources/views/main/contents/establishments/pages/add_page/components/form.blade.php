@@ -13,7 +13,16 @@
                         >Establishment Code</label
                         >
                      <div class="col-sm-9">
-                        <input
+                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text" id="basic-addon1">ES - </span>
+                        </div>
+                        <input type="number" class="form-control"  name="es_code"
+                           id="es_code"
+                           placeholder="Establishment Code Here"
+                           required="">
+                     </div>
+                        <!-- <input
                            type="text"
                            class="form-control"
                            name="es_code"
@@ -21,7 +30,7 @@
                            placeholder="Establishment Code Here"
                            value="ES-"
                            required=""
-                           />
+                           /> -->
                      </div>
                   </div>
                   <div class="mb-3 row">
