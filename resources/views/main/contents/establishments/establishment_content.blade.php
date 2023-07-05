@@ -3,7 +3,7 @@
 @section('content')
 @include('main.contents.establishments.components.breadcrumb')
 @include('main.contents.establishments.components.establishment_table')
-<!-- @include('main.contents.establishments.modals.add_establishment_modal') -->
+@include('main.contents.establishments.modals.update_establishment_modal')
 
 @endsection
 @section('script')
@@ -11,6 +11,7 @@
 
 var establishment_table = $("#file_export").DataTable({
     dom: "Bfrtip",
+   
     buttons: ["copy", "csv", "excel", "pdf", "print"],
     "ajax" : {
       "url": base_url + '/get-establishment', type : "POST", headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, "dataSrc": "",
@@ -36,16 +37,52 @@ var establishment_table = $("#file_export").DataTable({
           return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_name']+'</span>'; 
         } 
       },
+      { 
+        data: null, render: function (data, type, row) 
+        { 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_address']+'</span>'; 
+        } 
+      },
+      { 
+        data: null, render: function (data, type, row) 
+        { 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_contact']+'</span>'; 
+        } 
+      },
+      { 
+        data: null, render: function (data, type, row) 
+        { 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_email']+'</span>'; 
+        } 
+      },
+      { 
+        data: null, render: function (data, type, row) 
+        { 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_personnel']+'</span>'; 
+        } 
+      },
+      { 
+        data: null, render: function (data, type, row) 
+        { 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_position']+'</span>'; 
+        } 
+      },
       {
         
         data: null,
         render: function (data, type, row) {
-            return    '<a href="javascript:;" class="text-secondary " >\
+            return    '<a href="javascript:;" class="text-secondary update-establishment" \
+                        data-es-code="'+row['es_code']+'"\
+                        data-es-code="'+row['es_name']+'"\
+                        data-es-code="'+row['es_address']+'"\
+                        data-es-code="'+row['es_id']+'"\
+                        data-es-code="'+row['es_email']+'"\
+                        data-es-code="'+row['es_personnel']+'"\
+                        data-es-code="'+row['es_position']+'"\
+                        data-bs-toggle="modal" data-bs-target="#update_establishment_modal" >\
                                 <i class="mdi mdi-pencil" style="font-size: 25px;"></i>\
                             </a> \
-                            <a href="javascript:;" class="text-danger " >\
-                                <i class="mdi mdi-eye" style="font-size: 25px;"></i>\
-                            </a>';
+                           ';
         }
 
     },
@@ -57,6 +94,12 @@ var establishment_table = $("#file_export").DataTable({
   ).addClass("btn btn-primary mr-1");
 
 
+  $(document).on('click','a.update-establishment',function (e) {
+
+
+    
+
+  });
 
   $(document).on('click','.delete-multi-establishment',function (e) {
 

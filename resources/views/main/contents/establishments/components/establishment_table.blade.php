@@ -26,6 +26,11 @@
                            <th></th>
                            <th>Establishment Code</th>
                            <th>Establishment Name</th>
+                           <th>Address</th>
+                           <th>Contact Number</th>
+                           <th>Email</th>
+                           <th>Authorized Personnel</th>
+                           <th>Position</th>
                            <th>Actions</th>
                         </tr>
                      </thead>

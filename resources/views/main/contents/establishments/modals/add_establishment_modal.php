@@ -8,7 +8,7 @@
                       <div class="modal-content">
                         <div class="modal-header d-flex align-items-center">
                           <h4 class="modal-title" id="exampleModalLabel1">
-                            New message
+                            Update Establishment
                           </h4>
                           <button
                             type="button"

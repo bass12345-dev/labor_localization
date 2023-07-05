@@ -44,7 +44,7 @@ class EstablishmentController extends Controller
 
         if($count == 0) {
 
-        $this->establishment->establishment_code = 'ES-'. $request->input('es_code');
+        $this->establishment->establishment_code =  $request->input('es_code');
         $this->establishment->establishment_name = $request->input('es_name');
         $this->establishment->address = $request->input('es_address');
         $this->establishment->contact_number = $request->input('es_contact');
@@ -73,9 +73,14 @@ class EstablishmentController extends Controller
         $establishment = EstablishmentModel::all()->sortBy("establishment_code");
         foreach($establishment as $row) {
             $data[] = [
-                'es_code'            => $row->establishment_code,
+                'es_code'            => 'ES - '.$row->establishment_code,
                 'es_name'            => $row->establishment_name,
-                'es_id'              => $row->establishment_id
+                'es_id'              => $row->establishment_id,
+                'es_contact'         => $row->contact_number != NULL ? $row->contact_number : '  ',
+                'es_address'         => $row->address != NULL ? $row->address : '  ',
+                'es_email'           => $row->email_address != NULL ? $row->email_address : ' ',
+                'es_personnel'       => $row->authorized_personnel != NULL ? $row->authorized_personnel : '  ',
+                'es_position'        => $row->position != NULL ? $row->position : '  '
                
             ];
         }
