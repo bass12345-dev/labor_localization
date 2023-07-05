@@ -9,7 +9,7 @@
 @section('script')
 <script>
 
-$("#file_export").DataTable({
+var establishment_table = $("#file_export").DataTable({
     dom: "Bfrtip",
     buttons: ["copy", "csv", "excel", "pdf", "print"],
     "ajax" : {
@@ -100,24 +100,44 @@ $("#file_export").DataTable({
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             beforeSend : function(){
 
-                                  Swal.fire({
-                                title: "",
-                                text: "Please Wait",
-                                icon: "",
-                                showCancelButton: false,
-                                showConfirmButton : false,
-                                reverseButtons: false,
-                                allowOutsideClick : false
-                            })
+                              JsLoadingOverlay.show({
+                                  'overlayBackgroundColor': '#666666',
+                                  'overlayOpacity': 0.6,
+                                  'spinnerIcon': 'pacman',
+                                  'spinnerColor': '#000',
+                                  'spinnerSize': '2x',
+                                  'overlayIDName': 'overlay',
+                                  'spinnerIDName': 'spinner',
+                                });
 
                             },
                             success: function(data){
-                               
+                          
+                                if(data.response){
 
-                              console.log(data)
+                                  toastr.success(
+                                            "",
+                                            data.message,
+                                            { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 }
+                                          );
+                                establishment_table.ajax.reload();
+                                
+                                }else {
 
-                               
-                            }
+                                  toastr.error(
+                                            "",
+                                            data.message,
+                                            { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 }
+                                          );
+                                }
+
+                            JsLoadingOverlay.hide(); 
+
+                            },  error: function(xhr) 
+                            { // if error occured
+                             alert('error')
+                                 
+                            },
                     })
 
 

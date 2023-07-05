@@ -38,7 +38,8 @@
 
     <script src="{{ asset('assets/vendor/toastr/toastr-init.js') }} "></script>
     <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.js') }} "></script>
-  
+    
+    <script src="{{ asset('assets/js/overly.js') }} "></script>
     <!-- <script src="{{ asset('assets/vendor/datatables/js/datatable-advanced.init.js') }}"></script> -->
 
     <!-- <script src="{{ asset('assets/js/validation.js') }}"></script> -->

@@ -8,6 +8,14 @@ use App\Models\EstablishmentModel;
 
 class EstablishmentController extends Controller
 {
+    public $establishment;
+
+    public function __construct()
+    {
+        $this->establishment = new EstablishmentModel;
+    }
+
+    
     public function index(){
 
         $data['title'] = 'Establishments';
@@ -31,21 +39,21 @@ class EstablishmentController extends Controller
 
     public function store(Request $request){
 
-        $establishment = new EstablishmentModel;
+        // $establishment = new EstablishmentModel;
         $count = EstablishmentModel::where('establishment_code', '=', $request->input('es_code'))->count();
 
         if($count == 0) {
 
-        $establishment->establishment_code = 'ES-'. $request->input('es_code');
-        $establishment->establishment_name = $request->input('es_name');
-        $establishment->address = $request->input('es_address');
-        $establishment->contact_number = $request->input('es_contact');
-        $establishment->email_address = $request->input('es_email');
-        $establishment->authorized_personnel = $request->input('es_authorized_personnel');
-        $establishment->position = $request->input('es_position');
-        $establishment->created_on = '2023-06-19 13:35:39';
+        $this->establishment->establishment_code = 'ES-'. $request->input('es_code');
+        $this->establishment->establishment_name = $request->input('es_name');
+        $this->establishment->address = $request->input('es_address');
+        $this->establishment->contact_number = $request->input('es_contact');
+        $this->establishment->email_address = $request->input('es_email');
+        $this->establishment->authorized_personnel = $request->input('es_authorized_personnel');
+        $this->establishment->position = $request->input('es_position');
+        $this->establishment->created_on = '2023-06-19 13:35:39';
 
-        if($establishment->save()){
+        if($this->establishment->save()){
 
             $data = array('message' => 'Added Succesfully' , 'response' => true , 'c' => 'alert-primary');
         }else {
@@ -78,7 +86,29 @@ class EstablishmentController extends Controller
 
     function delete(Request $request){
 
-        print_r($request->input('id'));
+
+        if(is_array($request->input('id'))) {
+
+                 
+            foreach($request->input('id') as $row ) {
+
+                $delete =  EstablishmentModel::where('establishment_id', $row)->delete();
+                if($delete) {
+
+                    $data = array('message' => 'Deleted Succesfully' , 'response' => 'true ');
+
+                }else {
+                    $data = array('message' => 'Error', 'response' => 'false');
+                }
+
+                echo json_encode($data);
+
+            }
+
+        }
+  
+
+        
 
     }
 }
