@@ -65,13 +65,20 @@ class EstablishmentController extends Controller
         $establishment = EstablishmentModel::all()->sortBy("establishment_code");
         foreach($establishment as $row) {
             $data[] = [
-                'es_code'             => $row->establishment_code,
+                'es_code'            => $row->establishment_code,
                 'es_name'            => $row->establishment_name,
+                'es_id'              => $row->establishment_id
                
             ];
         }
         return $data;
 
         
+    }
+
+    function delete(Request $request){
+
+        print_r($request->input('id'));
+
     }
 }

@@ -8,7 +8,7 @@
                   data-bs-target="#samedata-modal"
                   data-bs-whatever="@mdo">Add</button> -->
                <a href="{{ url('/establishments/add')}}" class="btn btn-primary float-end"  >Add</a>
-               <a href="{{ url('/establishments/add')}}" class="btn btn-danger float-end " style="margin-right: 5px;"  >Delete</a>
+               <button class="btn btn-danger float-end delete-multi-establishment" style="margin-right: 5px;"  >Delete</button>
             </div>
             <div class="card-body">
                <div class="table-responsive">

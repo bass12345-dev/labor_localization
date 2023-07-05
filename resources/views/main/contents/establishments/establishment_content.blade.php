@@ -4,6 +4,7 @@
 @include('main.contents.establishments.components.breadcrumb')
 @include('main.contents.establishments.components.establishment_table')
 <!-- @include('main.contents.establishments.modals.add_establishment_modal') -->
+
 @endsection
 @section('script')
 <script>
@@ -19,7 +20,7 @@ $("#file_export").DataTable({
         data: null, 
         render: function (data, type, row) 
         { 
-          return '<input type="checkbox"> '; 
+          return '<input type="checkbox" name="multi-establishment" value="'+row['es_id']+'" >  '; 
         } 
       }, 
       { 
@@ -56,7 +57,82 @@ $("#file_export").DataTable({
   ).addClass("btn btn-primary mr-1");
 
 
-  
+
+  $(document).on('click','.delete-multi-establishment',function (e) {
+
+    var selectedValues = [];
+        $('input[name=multi-establishment]:checked').map(function() {
+                    selectedValues.push($(this).val());
+        });
+    if (selectedValues.length < 1) {
+      toastr.error(
+        "",
+        "Please Select at least one!",
+        { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 }
+      );
+    }else {
+
+      delete_establishment(selectedValues);
+        }
+    
+  });
+
+  function delete_establishment(id){
+
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You wont be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then(function(result) {
+        if (result.value) {
+            
+                    $.ajax({
+                            type: "POST",
+                            url: base_url + '/delete-establishment',
+                            data: {id:id},
+                            cache: false,
+                            dataType: 'json', 
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            beforeSend : function(){
+
+                                  Swal.fire({
+                                title: "",
+                                text: "Please Wait",
+                                icon: "",
+                                showCancelButton: false,
+                                showConfirmButton : false,
+                                reverseButtons: false,
+                                allowOutsideClick : false
+                            })
+
+                            },
+                            success: function(data){
+                               
+
+                              console.log(data)
+
+                               
+                            }
+                    })
+
+
+
+            // result.dismiss can be "cancel", "overlay",
+            // "close", and "timer"
+        } else if (result.dismiss === "cancel") {
+           swal.close()
+
+        }
+    });
+
+
+
+  }
  
 </script>
 @endsection

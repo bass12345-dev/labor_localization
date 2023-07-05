@@ -7,3 +7,4 @@
 <!-- Custom CSS -->
 <link href=" {{ asset('assets/css/main/style.min.css') }} " rel="stylesheet" />
 <link href=" {{ asset('assets/vendor/datatables/css/dataTables.bootstrap5.min.css') }} " rel="stylesheet" />
+<link href=" {{ asset('assets/vendor/sweetalert2/sweetalert2.min.css') }} " rel="stylesheet" />

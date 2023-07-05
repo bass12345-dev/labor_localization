@@ -35,6 +35,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+    <script src="{{ asset('assets/vendor/toastr/toastr-init.js') }} "></script>
+    <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.js') }} "></script>
+  
     <!-- <script src="{{ asset('assets/vendor/datatables/js/datatable-advanced.init.js') }}"></script> -->
 
     <!-- <script src="{{ asset('assets/js/validation.js') }}"></script> -->
