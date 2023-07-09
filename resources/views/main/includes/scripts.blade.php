@@ -42,6 +42,7 @@
     <script src="{{ asset('assets/js/overly.js') }} "></script>
     <!-- <script src="{{ asset('assets/vendor/datatables/js/datatable-advanced.init.js') }}"></script> -->
 
-    <!-- <script src="{{ asset('assets/js/validation.js') }}"></script> -->
+    <script src="{{ asset('assets/js/validation.js') }}"></script>
+    
 
        

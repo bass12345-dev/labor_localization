@@ -1,72 +1,62 @@
 @extends('main.master')
 @section('title',  $title)
 @section('content')
-@include('main.contents.establishments.components.breadcrumb')
-@include('main.contents.establishments.components.establishment_table')
-@include('main.contents.establishments.modals.update_establishment_modal')
-
+@include('main.contents.users.components.user_breadcrumb')
+@include('main.contents.users.components.users_table')
 @endsection
 @section('script')
 <script>
 
-var establishment_table = $("#file_export").DataTable({
+var user_table = $("#user_table").DataTable({
     dom: "Bfrtip",
     scrollCollapse: true, scrollY: '200px',
     buttons: ["copy", "csv", "excel", "pdf", "print"],
     "ajax" : {
-      "url": base_url + '/get-establishment', type : "POST", headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, "dataSrc": "",
+      "url": base_url + '/get-users', type : "POST", headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, "dataSrc": "",
     },
     'columns': [ 
       { 
         data: null, 
         render: function (data, type, row) 
         { 
-          return '<input type="checkbox" name="multi-establishment" value="'+row['es_id']+'" >  '; 
+          return '<input type="checkbox" name="multi-items" value="'+row['user_id']+'" >  '; 
         } 
       }, 
       { 
         data: null, 
         render: function (data, type, row) 
         { 
-          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_code']+'</span>'; 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['first_name']+'</span>'; 
         } 
       }, 
       { 
-        data: null, render: function (data, type, row) 
+        data: null, 
+        render: function (data, type, row) 
         { 
-          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_name']+'</span>'; 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['username']+'</span>'; 
         } 
-      },
+      }, 
       { 
-        data: null, render: function (data, type, row) 
+        data: null, 
+        render: function (data, type, row) 
         { 
-          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_address']+'</span>'; 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['contact_number']+'</span>'; 
         } 
-      },
+      }, 
       { 
-        data: null, render: function (data, type, row) 
+        data: null, 
+        render: function (data, type, row) 
         { 
-          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_contact']+'</span>'; 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['email']+'</span>'; 
         } 
-      },
+      }, 
       { 
-        data: null, render: function (data, type, row) 
+        data: null, 
+        render: function (data, type, row) 
         { 
-          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_email']+'</span>'; 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['address']+'</span>'; 
         } 
-      },
-      { 
-        data: null, render: function (data, type, row) 
-        { 
-          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_personnel']+'</span>'; 
-        } 
-      },
-      { 
-        data: null, render: function (data, type, row) 
-        { 
-          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_position']+'</span>'; 
-        } 
-      },
+      }, 
       {
         
         data: null,
@@ -87,42 +77,36 @@ var establishment_table = $("#file_export").DataTable({
 
     },
       
+
     ]
-  });
-  $(
+});
+
+$(
     ".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel"
   ).addClass("btn btn-primary mr-1");
 
 
 
-  $(document).on('click','a.update-establishment',function (e) {
+  $(document).on('click','.delete-multi-items',function (e) {
 
+var selectedValues = [];
+    $('input[name=multi-items]:checked').map(function() {
+                selectedValues.push($(this).val());
+    });
+if (selectedValues.length < 1) {
+  toastr.error(
+    "",
+    "Please Select at least one!",
+    { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 }
+  );
+}else {
 
-    
+  delete_users(selectedValues);
+    }
 
-  });
+});
 
-  $(document).on('click','.delete-multi-establishment',function (e) {
-
-    var selectedValues = [];
-        $('input[name=multi-establishment]:checked').map(function() {
-                    selectedValues.push($(this).val());
-        });
-    if (selectedValues.length < 1) {
-      toastr.error(
-        "",
-        "Please Select at least one!",
-        { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 }
-      );
-    }else {
-
-      delete_establishment(selectedValues);
-        }
-    
-  });
-
-  function delete_establishment(id){
-
+function delete_users(id){
 
     Swal.fire({
         title: "Are you sure?",
@@ -137,7 +121,7 @@ var establishment_table = $("#file_export").DataTable({
             
                     $.ajax({
                             type: "POST",
-                            url: base_url + '/delete-establishment',
+                            url: base_url + '/delete-user',
                             data: {id:id},
                             cache: false,
                             dataType: 'json', 
@@ -164,7 +148,7 @@ var establishment_table = $("#file_export").DataTable({
                                             data.message,
                                             { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 }
                                           );
-                                establishment_table.ajax.reload();
+                                user_table.ajax.reload();
                                 
                                 }else {
 
@@ -193,10 +177,7 @@ var establishment_table = $("#file_export").DataTable({
 
         }
     });
-
-
-
-  }
- 
+}
 </script>
+
 @endsection

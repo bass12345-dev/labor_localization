@@ -26,6 +26,15 @@
             </li>
             <li class="sidebar-item">
                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{ url('/users')}}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-clipboard-text"></i
+                  ><span class="hide-menu">Users</span></a
+                  >
+            </li>
+            <li class="sidebar-item">
+               <a
                   class="sidebar-link waves-effect waves-dark sidebar-link text-danger"
                   href="{{ url('')}}"
                   aria-expanded="false"
