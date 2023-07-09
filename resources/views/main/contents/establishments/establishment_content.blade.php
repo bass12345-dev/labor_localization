@@ -11,7 +11,9 @@
 
 var establishment_table = $("#file_export").DataTable({
     dom: "Bfrtip",
-    scrollCollapse: true, scrollY: '200px',
+    fixedColumns: true,
+  fixedHeader: true,
+  scrollX: true,
     buttons: ["copy", "csv", "excel", "pdf", "print"],
     "ajax" : {
       "url": base_url + '/get-establishment', type : "POST", headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, "dataSrc": "",

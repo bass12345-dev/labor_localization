@@ -41,3 +41,12 @@ Route::get('/users/add', [App\Http\Controllers\Main\UsersController::class, 'add
 Route::post('/store-user', 'App\Http\Controllers\Main\UsersController@store');
 Route::post('/get-users', 'App\Http\Controllers\Main\UsersController@get');
 Route::post('/delete-user', 'App\Http\Controllers\Main\UsersController@delete');
+
+
+
+
+
+
+
+///Destroy Session
+Route::get('/out', 'App\Http\Controllers\Auth\Logout@out');

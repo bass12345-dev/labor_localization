@@ -36,7 +36,7 @@
             <li class="sidebar-item">
                <a
                   class="sidebar-link waves-effect waves-dark sidebar-link text-danger"
-                  href="{{ url('')}}"
+                  href="{{ url('/out')}}"
                   aria-expanded="false"
                   ><i class="mdi mdi-logout text-danger"></i
                   ><span class="hide-menu">Logout</span></a

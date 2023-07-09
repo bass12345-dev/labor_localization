@@ -36,7 +36,7 @@
             <div class="auth-box p-4  bg-white rounded"  style="height: 350px;width: 600px; " >
                 <div id="loginform">
                     <div class="logo">
-                        <h3 class="box-title mb-3 text-center">Sign In</h3>
+                        <h3 class="box-title mb-3 text-center">Sign In {{ $id }}</h3>
                     </div>
                     <div class="alert-message"></div>
                     <!-- Form -->
@@ -45,12 +45,12 @@
                             <form class="form-horizontal mt-3 form-material" id="loginform" >
                                 <div class="form-group mb-3">
                                     <div class="">
-                                        <input class="form-control" type="text" name="username"  placeholder="Username" />
+                                        <input class="form-control" type="text" required name="username"  placeholder="Username" />
                                     </div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <div class="">
-                                        <input class="form-control" type="password" name="password"  placeholder="Password" />
+                                        <input class="form-control" required type="password" name="password"  placeholder="Password" />
                                     </div>
                                 </div>
                                 
@@ -139,7 +139,7 @@
                var message_alert = '<div class="alert '+data.c+' alert-dismissible fade show " role="alert" ><div class="d-flex align-items-center"><i data-feather="check" class="fill-white feather-sm me-2"></i>'+data.message+'</div><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
                if(data.response){
                   $('.alert-message').html(message_alert);
-                  // window.location.href = '{{url("/dashboard")}}';
+                  window.location.href = '{{url("/dashboard")}}';
                }else {
                   $('.alert-message').html(message_alert);
                }
