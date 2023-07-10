@@ -35,7 +35,7 @@ class EstablishmentController extends Controller
 
     public function survey(){
         
-        $data['title'] = 'Survey';
+        $data['title'] = 'Survey/Report';
         return view('main.contents.establishments.pages.survey.survey')->with($data);
     }
 

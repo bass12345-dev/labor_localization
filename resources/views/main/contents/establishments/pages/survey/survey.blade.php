@@ -6,4 +6,24 @@
 @endsection
 
 @section('script')
+<script>
+ $("#local_table").DataTable({
+    fixedColumns: true,
+  fixedHeader: true,
+  scrollX: true,
+  "searching": false,
+  "lengthChange": false,
+  "info": false,
+  
+ });
+ $("#outside_table").DataTable({
+    fixedColumns: true,
+  fixedHeader: true,
+  scrollX: true,
+  "searching": false,
+  "lengthChange": false,
+  "info": false,
+ });
+</script>
 @endsection
+

@@ -4,9 +4,12 @@
       <div class="col-12">
          <div class="card">
             <div class="border-bottom title-part-padding">
+            <div class="col-sm-3 float-start">
+               <h3>1st Valley Bank Inc.</h3>
+            </div>
               
-               <a href="{{ url('/establishments/add')}}" class="btn btn-primary float-end"  >Add</a>
-               <div class="col-sm-3 float-start">
+               
+               <div class="col-sm-3 float-end">
                <form>
                     <div class="input-group">
                      
@@ -27,60 +30,24 @@
               
             </div>
             <div class="card-body">
-               <div class="table-responsive">
-                  <h3>Total Number of Workers From Oroquieta City</h3>
-                  <table
-                     id="file_export"
-                     class="
-                     table table-striped table-bordered
-                     display
+               <div class="row">
+                  <div class="col-9">
+                     @include('main.contents.establishments.pages.survey.components.local')
+                  </div>
+                  <div class="col-3">  
                      
-                     "
-                     style="width: 100%;"
-                     >
-                     <thead class="text-nowrap bg-info text-white">
-                        <tr>
-                           <th></th>
-                           <th>Permanent</th>
-                           <th>Probationary</th>
-                           <th>Contractuals</th>
-                           <th>Project-Based</th>
-                           <th>Seasonal</th>
-                           <th>Job Order</th>
-                           <th>Mgt</th>
-                           <th>Total</th>
-                           <th>Actions</th>
-                        </tr>
-                     </thead>
-                  </table>
+                     <div id="campaign" class="mt-2"></div>
+                  </div>
                </div>
-               <div class="table-responsive">
-                  <h3>Total Number of Workers Outside Oroquieta City</h3>
-                  <table
-                     id="file_export"
-                     class="
-                     table table-striped table-bordered
-                     display
-                     
-                     "
-                     style="width: 100%;"
-                     >
-                     <thead class="text-nowrap bg-info text-white">
-                        <tr>
-                           <th></th>
-                           <th>Permanent</th>
-                           <th>Probationary</th>
-                           <th>Contractuals</th>
-                           <th>Project-Based</th>
-                           <th>Seasonal</th>
-                           <th>Job Order</th>
-                           <th>Mgt</th>
-                           <th>Total</th>
-                           <th>Actions</th>
-                        </tr>
-                     </thead>
-                  </table>
+               <div class="row">
+                  <div class="col-9">
+                  @include('main.contents.establishments.pages.survey.components.outside')
+                  </div>
+                  <div class="col-3">
+                     <div id="campaign1" ></div>
+                  </div>
                </div>
+              
             </div>
          </div>
       </div>
