@@ -36,7 +36,7 @@ var establishment_table = $("#file_export").DataTable({
       { 
         data: null, render: function (data, type, row) 
         { 
-          return '<a href="{{ url('/establishments/survey') }}"style="color: #000;" class="table-font-size" >'+row['es_name']+'</a>'; 
+          return '<a href="{{ url('/establishments/survey') }}"style="color: blue;" class="table-font-size" >'+row['es_name']+'</a>'; 
         } 
       },
       { 
