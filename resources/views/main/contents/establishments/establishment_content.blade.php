@@ -30,13 +30,13 @@ var establishment_table = $("#file_export").DataTable({
         data: null, 
         render: function (data, type, row) 
         { 
-          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_code']+'</span>'; 
+          return '<span  style="color: #000;" class="table-font-size" >'+row['es_code']+'</span>'; 
         } 
       }, 
       { 
         data: null, render: function (data, type, row) 
         { 
-          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_name']+'</span>'; 
+          return '<a href="{{ url('/establishments/survey') }}"style="color: #000;" class="table-font-size" >'+row['es_name']+'</a>'; 
         } 
       },
       { 
@@ -67,6 +67,12 @@ var establishment_table = $("#file_export").DataTable({
         data: null, render: function (data, type, row) 
         { 
           return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['es_position']+'</span>'; 
+        } 
+      },
+      { 
+        data: null, render: function (data, type, row) 
+        { 
+          return '<span href="javascript:;"style="color: #000;" class="table-font-size" >'+row['status']+'</span>'; 
         } 
       },
       {

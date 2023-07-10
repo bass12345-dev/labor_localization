@@ -19,6 +19,7 @@ class EstablishmentModel extends Model
         'email_address',
         'authorized_personnel',
         'position',
+        'status',
         'created_on'
 
 

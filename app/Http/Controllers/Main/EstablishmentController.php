@@ -33,6 +33,12 @@ class EstablishmentController extends Controller
         return view('main.contents.establishments.pages.add_page.add_establishment')->with($data);
     }
 
+    public function survey(){
+        
+        $data['title'] = 'Survey';
+        return view('main.contents.establishments.pages.survey.survey')->with($data);
+    }
+
 
 
 
@@ -52,6 +58,7 @@ class EstablishmentController extends Controller
         $this->establishment->authorized_personnel = $request->input('es_authorized_personnel');
         $this->establishment->position = $request->input('es_position');
         $this->establishment->created_on = '2023-06-19 13:35:39';
+        $this->establishment->status = 'active';
 
         if($this->establishment->save()){
 
@@ -80,7 +87,8 @@ class EstablishmentController extends Controller
                 'es_address'         => $row->address != NULL ? $row->address : '  ',
                 'es_email'           => $row->email_address != NULL ? $row->email_address : ' ',
                 'es_personnel'       => $row->authorized_personnel != NULL ? $row->authorized_personnel : '  ',
-                'es_position'        => $row->position != NULL ? $row->position : '  '
+                'es_position'        => $row->position != NULL ? $row->position : '  ',
+                'status'             => $row->status
                
             ];
         }

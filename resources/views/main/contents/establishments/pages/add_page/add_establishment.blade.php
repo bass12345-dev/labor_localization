@@ -1,4 +1,4 @@
-@extends('main.master')
+@extends('main.no_sidebar_master')
 @section('title',  $title)
 @section('content')
 @include('main.contents.establishments.pages.add_page.components.breadcrumb')
