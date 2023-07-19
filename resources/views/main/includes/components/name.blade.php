@@ -6,7 +6,7 @@
                     pro-pic
                   " href="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   
-            <span class="ms-1 font-weight-medium d-none d-sm-inline-block">
+            <span class="ms-1 font-weight-medium d-none d-sm-inline-block" style="color:white;">
                     Basil John
               
             </span>

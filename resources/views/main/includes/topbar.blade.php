@@ -6,7 +6,7 @@
       </a>
       @include('main.includes.components.logo')
     </div>
-    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+    <div class="navbar-collapse collapse" id="navbarSupportedContent" style="background-color: #233242;">
       <ul class="navbar-nav me-auto">
         <!-- @include('main.includes.components.search') -->
       </ul>
