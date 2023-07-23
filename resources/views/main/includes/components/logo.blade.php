@@ -1,5 +1,5 @@
 <div class="navbar-brand">
-    <a href="index.html" class="logo">
+    <a href="{{ url('/dashboard') }}" class="logo">
 <!-- Logo icon -->
         <b class="logo-icon">
                               Labor Localization
