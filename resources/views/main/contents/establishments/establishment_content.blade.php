@@ -81,12 +81,12 @@ var establishment_table = $("#file_export").DataTable({
         render: function (data, type, row) {
             return    '<a href="javascript:;" class="text-secondary update-establishment" \
                         data-es-code="'+row['es_code']+'"\
-                        data-es-code="'+row['es_name']+'"\
-                        data-es-code="'+row['es_address']+'"\
-                        data-es-code="'+row['es_id']+'"\
-                        data-es-code="'+row['es_email']+'"\
-                        data-es-code="'+row['es_personnel']+'"\
-                        data-es-code="'+row['es_position']+'"\
+                        data-es-name="'+row['es_name']+'"\
+                        data-es-id="'+row['es_id']+'"\
+                        data-es-address="'+row['es_address']+'"\
+                        data-es-email="'+row['es_email']+'"\
+                        data-es-personnel="'+row['es_personnel']+'"\
+                        data-es-position="'+row['es_position']+'"\
                         data-bs-toggle="modal" data-bs-target="#update_establishment_modal" >\
                                 <i class="mdi mdi-pencil" style="font-size: 25px;"></i>\
                             </a> \
