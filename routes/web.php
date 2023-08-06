@@ -52,6 +52,8 @@ Route::post('/delete-user', 'App\Http\Controllers\Main\UsersController@delete');
 
 
 
+// Back Up Database
+Route::get('/back-up-database', [App\Http\Controllers\Main\BackupDBController::class, 'index']);
 
 
 

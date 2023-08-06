@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\EstablishmentModel;
+use Carbon\Carbon;
 
 class EstablishmentController extends Controller
 {
@@ -18,7 +19,8 @@ class EstablishmentController extends Controller
     
     public function index(){
 
-        $data['title'] = 'Establishments';
+        $data['title']       = 'Establishments';
+        $data['latest_year'] =  Carbon::now()->format('Y');
         return view('main.contents.establishments.establishment_content')->with($data);
 
        
@@ -36,6 +38,7 @@ class EstablishmentController extends Controller
     public function survey(){
         
         $data['title'] = 'Survey/Report';
+        $data['latest_year'] =  Carbon::now()->format('Y');
         return view('main.contents.establishments.pages.survey.survey')->with($data);
     }
 

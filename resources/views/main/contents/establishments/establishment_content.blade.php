@@ -9,6 +9,10 @@
 @section('script')
 <script>
 
+  var latest_year = '<?php echo $latest_year ?>';
+
+  console.log(latest_year)
+
 var establishment_table = $("#file_export").DataTable({
     dom: "Bfrtip",
     fixedColumns: true,
@@ -36,7 +40,7 @@ var establishment_table = $("#file_export").DataTable({
       { 
         data: null, render: function (data, type, row) 
         { 
-          return '<a href="{{ url('/establishments/survey') }}"style="color: blue;" class="table-font-size" >'+row['es_name']+'</a>'; 
+          return '<a href="{{ url('/establishments/survey?year=2023' ) }}" style="color: blue;" class="table-font-size" >'+row['es_name']+'</a>'; 
         } 
       },
       { 

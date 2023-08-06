@@ -14,6 +14,8 @@
   "searching": false,
   "lengthChange": false,
   "info": false,
+  "bPaginate": false, 
+  "bFilter": false 
   
  });
  $("#outside_table").DataTable({
@@ -23,7 +25,14 @@
   "searching": false,
   "lengthChange": false,
   "info": false,
+  "bPaginate": false, 
+  "bFilter": false 
  });
+
+
+
+
+
 </script>
 @endsection
 

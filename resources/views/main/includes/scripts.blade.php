@@ -45,4 +45,16 @@
     <script src="{{ asset('assets/js/validation.js') }}"></script>
     
 
+    <script type="text/javascript">
+
+       
+        // let func = {
+
+        //         openWindow : function(url){
+
+
+        //         } 
+        // }
+
+    </script>
        

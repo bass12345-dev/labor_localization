@@ -14,9 +14,30 @@
                     <div class="input-group">
                      
                     <select class="form-select">
-                     <option>2023</option>
+
+                     <?php
+
+                        
+
+                        for ($i= $latest_year; $i <= 2040; $i++) { 
+
+                           if ($i == $latest_year) {
+
+                              $selected = 'selected';
+                              // code...
+                           }else {
+                               $selected = '';
+                           }
+
+                           echo '<option '.$selected.' id="survey_year_opt"> '.$i.'</option>';
+                              
+
+                        }
+
+                      ?>
+                    <!--  <option>2023</option>
                      <option>2024</option>
-                     <option>2025</option>
+                     <option>2025</option> -->
                   </select>
                       <button
                         class="btn btn-light-info text-info font-weight-medium"
@@ -31,21 +52,21 @@
             </div>
             <div class="card-body">
                <div class="row">
-                  <div class="col-9">
+                  <div class="col-12">
                      @include('main.contents.establishments.pages.survey.components.local')
                   </div>
-                  <div class="col-3">  
+                 <!--  <div class="col-3">  
                      
                      <div id="campaign" class="mt-2"></div>
-                  </div>
+                  </div> -->
                </div>
                <div class="row">
-                  <div class="col-9">
+                  <div class="col-12">
                   @include('main.contents.establishments.pages.survey.components.outside')
                   </div>
-                  <div class="col-3">
+                 <!--  <div class="col-3">
                      <div id="campaign1" ></div>
-                  </div>
+                  </div> -->
                </div>
               
             </div>

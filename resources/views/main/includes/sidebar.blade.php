@@ -35,6 +35,15 @@
             </li>
             <li class="sidebar-item">
                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{ url('/back-up-database')}}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-clipboard-text"></i
+                  ><span class="hide-menu">Back Up Database</span></a
+                  >
+            </li>
+            <li class="sidebar-item">
+               <a
                   class="sidebar-link waves-effect waves-dark sidebar-link text-danger"
                   href="{{ url('/out')}}"
                   aria-expanded="false"
