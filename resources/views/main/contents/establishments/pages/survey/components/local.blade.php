@@ -1,4 +1,5 @@
 <div class="table-responsive">
+            <button class="btn btn-primary pull-right mb-2">Update</button>
                   <h3>Total Number of Workers From Oroquieta City</h3>
                   <table
                      id="local_table"

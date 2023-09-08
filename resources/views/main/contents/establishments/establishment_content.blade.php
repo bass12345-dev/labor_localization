@@ -42,7 +42,7 @@ var establishment_table = $("#file_export").DataTable({
       { 
         data: null, render: function (data, type, row) 
         { 
-          return '<a href="'+latest_year+'" style="color: blue;" class="table-font-size" >'+row['es_name']+'</a>'; 
+          return '<a href="{{ url("/establishments/survey?year=$latest_year&&es_id=") }}'+row['es_id']+'" style="color: blue;" class="table-font-size"  data-id="'+row['es_id']+'" >'+row['es_name']+'</a>'; 
         } 
       },
       { 
@@ -107,12 +107,15 @@ var establishment_table = $("#file_export").DataTable({
     ".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel"
   ).addClass("btn btn-primary mr-1");
 
-
-
   $(document).on('click','a.update-establishment',function (e) {
 
+  });
 
-    
+
+  $(document).on('click','a#view_survey',function (e) {
+
+
+      alert(latest_year + $(this).data('id'));
 
   });
 

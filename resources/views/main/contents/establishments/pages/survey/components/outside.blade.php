@@ -1,4 +1,6 @@
-<div class="table-responsive">
+<div class="table-responsive mt-4 clearfix">
+   <button class="btn btn-primary pull-right mb-2">Update</button>
+
                   <h3>Total Number of Workers Outside Oroquieta City</h3>
                   <table
                      id="outside_table"
