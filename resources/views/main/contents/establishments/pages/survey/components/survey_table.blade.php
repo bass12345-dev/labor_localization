@@ -52,14 +52,14 @@
             </div>
             <div class="card-body">
                <div class="row">
-                  <div class="col-12">
+                  <div class="col-md-12">
                      @include('main.contents.establishments.pages.survey.components.local')
+
                   </div>
-                 <!--  <div class="col-3">  
-                     
-                     <div id="campaign" class="mt-2"></div>
-                  </div> -->
                </div>
+               <div id="update_local_data" hidden="true" >
+                  @include('main.contents.establishments.pages.survey.components.local_update_form')
+                </div>
                <div class="row">
                   <div class="col-12">
                   @include('main.contents.establishments.pages.survey.components.outside')
@@ -68,6 +68,9 @@
                      <div id="campaign1" ></div>
                   </div> -->
                </div>
+               <div id="update_outside_data" hidden="true">
+                  @include('main.contents.establishments.pages.survey.components.outside_update_form')
+                </div>
               
             </div>
          </div>

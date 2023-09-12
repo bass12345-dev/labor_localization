@@ -1,5 +1,5 @@
 <div class="table-responsive">
-            <button class="btn btn-primary pull-right mb-2">Update</button>
+            <button class="btn btn-warning pull-right mb-2" id="local_update">Update</button>
                   <h3>Total Number of Workers From Oroquieta City</h3>
                   <table
                      id="local_table"
@@ -21,7 +21,7 @@
                            <th>Job Order</th>
                            <th>Mgt</th>
                            <th>Total</th>
-                           <th>Actions</th>
+                          
                         </tr>
                      </thead>
                   </table>

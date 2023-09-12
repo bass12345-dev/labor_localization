@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\EstablishmentModel;
+use App\Models\SurveyModel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -12,17 +13,23 @@ use Illuminate\Support\Facades\DB;
 class EstablishmentController extends Controller
 {
     public $establishment;
+    public $survey;
+    public $establishment_table = 'establishments';
+    public $survey_table        = 'survey';
+    public $latest_year;
 
     public function __construct()
     {
-        $this->establishment = new EstablishmentModel;
+        $this->establishment    = new EstablishmentModel;
+        $this->survey           = new SurveyModel;
+        $this->latest_year      = Carbon::now()->format('Y');
     }
 
     
     public function index(){
 
         $data['title']       = 'Establishments';
-        $data['latest_year'] =  Carbon::now()->format('Y');
+        $data['latest_year'] =  $this->latest_year;
         return view('main.contents.establishments.establishment_content')->with($data);
 
        
@@ -39,13 +46,38 @@ class EstablishmentController extends Controller
 
     public function survey(){
         
-        $data['title'] = 'Survey/Report';
-        $data['latest_year'] =  Carbon::now()->format('Y');
-        $data['es_name'] = DB::table('establishments')->where('establishment_id', $_GET['es_id'])->first()->establishment_name;
- 
+        $data['title']          = 'Survey/Report';
+        $data['latest_year']    =  $this->latest_year;
+        $data['es_name']        = EstablishmentModel::where('establishment_id', '=', $_GET['es_id'])->first()->establishment_name;
+        $data['survey_data']    = SurveyModel::where('es_id', '=', $_GET['es_id'])->first();
+
+       
         return view('main.contents.establishments.pages.survey.survey')->with($data);
     }
 
+
+    public function store_survey_local(Request $request){
+
+        
+        $id                                     = $request->input('es_id');
+
+        $this->survey->local_permanent          = $request->input('permanent');
+        $this->survey->local_probationary       = $request->input('probationary');
+        $this->survey->local_contractual        = $request->input('contractual');
+        $this->survey->local_project_based      = $request->input('project_based');
+        $this->survey->local_seasonal           = $request->input('seasonal');
+        $this->survey->local_jo                 = $request->input('jo');
+        $this->survey->local_mgt                = $request->input('mgt');
+
+
+        
+
+
+
+        
+
+
+    }
 
 
 
@@ -57,17 +89,37 @@ class EstablishmentController extends Controller
 
         if($count == 0) {
 
-        $this->establishment->establishment_code =  $request->input('es_code');
-        $this->establishment->establishment_name = $request->input('es_name');
-        $this->establishment->address = $request->input('es_address');
-        $this->establishment->contact_number = $request->input('es_contact');
-        $this->establishment->email_address = $request->input('es_email');
-        $this->establishment->authorized_personnel = $request->input('es_authorized_personnel');
-        $this->establishment->position = $request->input('es_position');
-        $this->establishment->created_on = '2023-06-19 13:35:39';
-        $this->establishment->status = 'active';
+        $this->establishment->establishment_code    =  $request->input('es_code');
+        $this->establishment->establishment_name    = $request->input('es_name');
+        $this->establishment->address               = $request->input('es_address');
+        $this->establishment->contact_number        = $request->input('es_contact');
+        $this->establishment->email_address         = $request->input('es_email');
+        $this->establishment->authorized_personnel  = $request->input('es_authorized_personnel');
+        $this->establishment->position              = $request->input('es_position');
+        $this->establishment->created_on            = '2023-06-19 13:35:39';
+        $this->establishment->status                = 'active';
 
         if($this->establishment->save()){
+
+            $this->survey->es_id                        = $this->establishment->id;
+            $this->survey->year                         = $this->latest_year;
+            $this->survey->local_permanent              = 0;
+            $this->survey->local_probationary           = 0;
+            $this->survey->local_contractual            = 0;
+            $this->survey->local_project_based          = 0;
+            $this->survey->local_seasonal               = 0;
+            $this->survey->local_jo                     = 0;
+            $this->survey->local_mgt                    = 0;
+
+
+            $this->survey->outside_permanent            = 0;
+            $this->survey->outside_probationary         = 0;
+            $this->survey->outside_contractual          = 0;
+            $this->survey->outside_project_based        = 0;
+            $this->survey->outside_seasonal             = 0;
+            $this->survey->outside_jo                   = 0;
+            $this->survey->outside_mgt                  = 0;
+            $this->survey->save();
 
             $data = array('message' => 'Added Succesfully' , 'response' => true , 'c' => 'alert-primary');
         }else {

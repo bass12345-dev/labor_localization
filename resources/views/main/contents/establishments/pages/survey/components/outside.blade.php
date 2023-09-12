@@ -1,5 +1,5 @@
 <div class="table-responsive mt-4 clearfix">
-   <button class="btn btn-primary pull-right mb-2">Update</button>
+   <button class="btn btn-warning pull-right mb-2" id="outside_update">Update</button>
 
                   <h3>Total Number of Workers Outside Oroquieta City</h3>
                   <table
@@ -22,7 +22,7 @@
                            <th>Job Order</th>
                            <th>Mgt</th>
                            <th>Total</th>
-                           <th>Actions</th>
+                          
                         </tr>
                      </thead>
                   </table>

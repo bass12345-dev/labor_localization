@@ -43,6 +43,24 @@
     <!-- <script src="{{ asset('assets/vendor/datatables/js/datatable-advanced.init.js') }}"></script> -->
 
     <script src="{{ asset('assets/js/validation.js') }}"></script>
+
+    <script type="text/javascript">
+        function _before(){
+
+               $('button[type=submit]').prop('disabled', true);
+               JsLoadingOverlay.show({
+                     'overlayBackgroundColor': '#666666',
+                     'overlayOpacity': 0.6,
+                     'spinnerIcon': 'pacman',
+                     'spinnerColor': '#000',
+                     'spinnerSize': '2x',
+                     'overlayIDName': 'overlay',
+                     'spinnerIDName': 'spinner',
+                  });
+        }
+    </script>
+
+
     
 
 
