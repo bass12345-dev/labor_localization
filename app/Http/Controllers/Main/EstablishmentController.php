@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\EstablishmentModel;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 
 class EstablishmentController extends Controller
 {
@@ -39,6 +41,8 @@ class EstablishmentController extends Controller
         
         $data['title'] = 'Survey/Report';
         $data['latest_year'] =  Carbon::now()->format('Y');
+        $data['es_name'] = DB::table('establishments')->where('establishment_id', $_GET['es_id'])->first()->establishment_name;
+ 
         return view('main.contents.establishments.pages.survey.survey')->with($data);
     }
 

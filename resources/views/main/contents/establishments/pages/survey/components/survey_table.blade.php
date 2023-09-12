@@ -5,7 +5,7 @@
          <div class="card">
             <div class="border-bottom title-part-padding">
             <div class="col-sm-3 float-start">
-               <h3>1st Valley Bank Inc.</h3>
+               <h3>{{ $es_name }}</h3>
             </div>
               
                
