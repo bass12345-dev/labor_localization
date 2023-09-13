@@ -161,15 +161,9 @@ var establishment_table = $("#file_export").DataTable({
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             beforeSend : function(){
 
-                              JsLoadingOverlay.show({
-                                  'overlayBackgroundColor': '#666666',
-                                  'overlayOpacity': 0.6,
-                                  'spinnerIcon': 'pacman',
-                                  'spinnerColor': '#000',
-                                  'spinnerSize': '2x',
-                                  'overlayIDName': 'overlay',
-                                  'spinnerIDName': 'spinner',
-                                });
+                             _before(); 
+
+                              $('button[type=submit]').prop('disabled', true);
 
                             },
                             success: function(data){

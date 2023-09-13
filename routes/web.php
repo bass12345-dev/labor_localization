@@ -41,7 +41,7 @@ Route::post('/delete-establishment', 'App\Http\Controllers\Main\EstablishmentCon
 
 //Establishment Survey POST
 Route::post('/store-survey-local', 'App\Http\Controllers\Main\EstablishmentController@store_survey_local');
-
+Route::post('/get-survey-data', 'App\Http\Controllers\Main\EstablishmentController@get_survey_data');
 
 //Users View
 Route::get('/users', [App\Http\Controllers\Main\UsersController::class, 'index']);

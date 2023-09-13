@@ -58,24 +58,35 @@ class EstablishmentController extends Controller
 
     public function store_survey_local(Request $request){
 
-        
-        $id                                     = $request->input('es_id');
 
-        $this->survey->local_permanent          = $request->input('permanent');
-        $this->survey->local_probationary       = $request->input('probationary');
-        $this->survey->local_contractual        = $request->input('contractual');
-        $this->survey->local_project_based      = $request->input('project_based');
-        $this->survey->local_seasonal           = $request->input('seasonal');
-        $this->survey->local_jo                 = $request->input('jo');
-        $this->survey->local_mgt                = $request->input('mgt');
+        $items = array(
+
+                        'local_permanent'          => $request->input('permanent'),
+                        'local_probationary'       => $request->input('probationary'),
+                        'local_contractual'        => $request->input('contractual'),
+                        'local_project_based'      => $request->input('project_based'),
+                        'local_seasonal'           => $request->input('seasonal'),
+                        'local_jo'                 => $request->input('jo'),
+                        'local_mgt'                => $request->input('mgt')
+        );
+
+        $update = DB::table('survey')
+                    ->where('es_id', $request->input('es_id'))
+                    ->where('year', $request->input('year'))
+                    ->update($items);
+
+        if ($update) {
+
+             $data = array('message' => 'Updated Successfully' , 'response' => true );
+
+        }else {
+
+            $data = array('message' => 'Something Wrong/Data is not updated' , 'response' => false );
 
 
-        
-
-
-
-        
-
+        }
+       
+       return response()->json($data);
 
     }
 
@@ -154,6 +165,17 @@ class EstablishmentController extends Controller
         return $data;
 
         
+    }
+
+    public function get_survey_data(Request $request){
+
+    $type    =  $request->input('type');
+    $year    =  $request->input('year');
+    $es_id    =  $request->input('es_id');
+    $local_survey = DB::table('survey')->where('es_id', $es_id)->where('year', $year)->first();
+    return response()->json($local_survey);
+
+
     }
 
     function delete(Request $request){

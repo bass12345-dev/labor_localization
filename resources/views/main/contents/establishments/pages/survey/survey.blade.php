@@ -60,39 +60,89 @@
             url: base_url + '/store-survey-local',
             data: $(this).serialize(),
             dataType: 'json',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            headers: csrf,
             beforeSend : function() {
                 
-                _before();                                  
+                _before(); 
+                 $('button[type=submit]').prop('disabled', true);                                 
               
             },
             success: function(data)
             {         
-               // var message_alert = '<div class="alert '+data.c+' alert-dismissible fade show " role="alert" ><div class="d-flex align-items-center"><i data-feather="check" class="fill-white feather-sm me-2"></i>'+data.message+'</div><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+               
                if(data.response){
-                alert('success');
-                  // $('.alert-message').html(message_alert);
-                  // $('#add_establishment_form')[0].reset();
+                   toastr.success("",
+                                  data.message,
+                                { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 });
+                  $('#update_local_survey')[0].reset();
                }else {
-                alert('error');
-                  // $('.alert-message').html(message_alert);
+                
+                  toastr.error("",
+                                  data.message,
+                                { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 });
                }
                $('button[type=submit]').prop('disabled', false);
                JsLoadingOverlay.hide();
+
+               const Survey = new SurveyData($('input[name=es_id]').val(),$('input[name=type]').val(),$('input[name=year]').val());
+               Survey.local_data();
              
             },
             error: function(xhr) 
             { // if error occured
 
               alert('error');
-               // $('.alert-message').html('<div class="alert alert-danger alert-dismissible fade show " role="alert" ><div class="d-flex align-items-center"><i data-feather="check" class="fill-white feather-sm me-2"></i>Something Wrong</div><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-               JsLoadingOverlay.hide();                 
+              JsLoadingOverlay.hide();                 
             },
 
 
          });
+  });
 
-  })
+
+class SurveyData{
+
+  constructor(es_id,type,year){
+    this.es_id = es_id;
+    this.type = type;
+    this.year = year;
+  }
+
+
+  local_data(){
+
+    $.ajax({
+
+            type : 'POST',
+            url   : base_url + '/get-survey-data',
+            data : { es_id : this.es_id, type : this.type, year : this.year},
+            dataType : 'json',
+            headers: csrf,
+            success: function(response){
+               $('input[name=permanent]').val(response.local_permanent);
+               $('input[name=probationary]').val(response.local_probationary);
+               $('input[name=contractual]').val(response.local_contractual);
+               $('input[name=project_based]').val(response.local_project_based);
+               $('input[name=seasonal]').val(response.local_seasonal);
+               $('input[name=jo]').val(response.local_jo);
+               $('input[name=mgt]').val(response.local_mgt);
+
+            },
+            error: function(xhr) 
+            { // if error occured
+
+              alert('error');
+             
+            },
+
+    })
+
+  }
+
+}
+
+
+
 </script>
 @endsection
 
