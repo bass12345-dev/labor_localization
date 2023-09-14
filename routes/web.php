@@ -40,7 +40,7 @@ Route::post('/delete-establishment', 'App\Http\Controllers\Main\EstablishmentCon
 
 
 //Establishment Survey POST
-Route::post('/store-survey-local', 'App\Http\Controllers\Main\EstablishmentController@store_survey_local');
+Route::post('/store-survey', 'App\Http\Controllers\Main\EstablishmentController@store_survey');
 Route::post('/get-survey-data', 'App\Http\Controllers\Main\EstablishmentController@get_survey_data');
 
 //Users View

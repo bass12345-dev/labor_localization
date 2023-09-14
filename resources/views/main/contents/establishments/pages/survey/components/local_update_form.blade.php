@@ -1,5 +1,5 @@
     
-                <form class="row mt-3 border p-2 m-0" id="update_local_survey" method="post">
+                <form class="row mt-3 border p-2 m-0" id="update_local_survey" method="post" action="/store-survey">
                   <input type="hidden" name="es_id" value="{{ $_GET['es_id'] }}">
                   <input type="hidden" name="year" value="{{ $_GET['year'] }}">
                   <input type="hidden" name="type" value="local">

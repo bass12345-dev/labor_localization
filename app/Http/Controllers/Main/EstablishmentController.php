@@ -56,10 +56,12 @@ class EstablishmentController extends Controller
     }
 
 
-    public function store_survey_local(Request $request){
+    public function store_survey(Request $request){
 
 
-        $items = array(
+        if ($request->input('type') == 'local') {
+            
+                    $items = array(
 
                         'local_permanent'          => $request->input('permanent'),
                         'local_probationary'       => $request->input('probationary'),
@@ -69,6 +71,24 @@ class EstablishmentController extends Controller
                         'local_jo'                 => $request->input('jo'),
                         'local_mgt'                => $request->input('mgt')
         );
+        }else if ($request->input('type') == 'outside'){
+
+
+             $items = array(
+
+                        'outside_permanent'          => $request->input('permanent'),
+                        'outside_probationary'       => $request->input('probationary'),
+                        'outside_contractual'        => $request->input('contractual'),
+                        'outside_project_based'      => $request->input('project_based'),
+                        'outside_seasonal'           => $request->input('seasonal'),
+                        'outside_jo'                 => $request->input('jo'),
+                        'outside_mgt'                => $request->input('mgt')
+        );
+
+        }
+
+
+
 
         $update = DB::table('survey')
                     ->where('es_id', $request->input('es_id'))

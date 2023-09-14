@@ -60,6 +60,77 @@
         }
 
         let csrf = {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')};
+
+
+        function toast_error_alert(message){
+
+            toastr.error("",
+                        message,
+                        { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 });
+        }
+     
+
+        function toast_success_alert(message){
+
+             toastr.success("",
+                        message,
+                        { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 });
+
+        }
+
+        
+
+
+
+        function _ajax_post(url,form,table,e,type){
+
+
+            e.preventDefault();
+
+                    $.ajax({ 
+                        type: "POST",
+                        url: base_url + url,
+                        data: $(form).serialize(),
+                        dataType: 'json',
+                        headers: csrf,
+                        beforeSend : function() {
+                            
+                            _before(); 
+                             $('button[type=submit]').prop('disabled', true);                                 
+                          
+                        },
+                        success: function(data)
+                        {         
+                           
+                           if(data.response){
+
+                                toast_success_alert(data.message);
+                               
+
+                                if (table == '') {
+
+                                        table.ajax.reload();
+                                }
+
+
+                           }else {
+                            
+                                toast_error_alert(data.message);
+                               
+                           }
+                           $('button[type=submit]').prop('disabled', false);
+                           JsLoadingOverlay.hide();
+                        },
+                        error: function(xhr) 
+                        { // if error occured
+
+                          alert('error');
+                          JsLoadingOverlay.hide();                 
+                        },
+
+
+                     });
+        }
     </script>
 
 

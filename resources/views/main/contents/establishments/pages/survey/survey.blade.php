@@ -7,27 +7,20 @@
 
 @section('script')
 <script>
- $("#local_table").DataTable({
-    fixedColumns: true,
-  fixedHeader: true,
-  scrollX: true,
-  "searching": false,
-  "lengthChange": false,
-  "info": false,
-  "bPaginate": false, 
-  "bFilter": false 
+
+
+// console.log(arr);
+ // $("#local_table").DataTable({
+ //    fixedColumns: true,
+ //  fixedHeader: true,
+ //  scrollX: true,
+ //  "searching": false,
+ //  "lengthChange": false,
+ //  "info": false,
+ //  "bPaginate": false, 
+ //  "bFilter": false 
   
- });
- $("#outside_table").DataTable({
-    fixedColumns: true,
-  fixedHeader: true,
-  scrollX: true,
-  "searching": false,
-  "lengthChange": false,
-  "info": false,
-  "bPaginate": false, 
-  "bFilter": false 
- });
+// });
 
 
 
@@ -50,82 +43,38 @@
      $("#outside_update").removeAttr("hidden");
   });
 
+  var outside_table = $("#outside_table").DataTable({
+      fixedColumns: true,
+      fixedHeader: true,
+      scrollX: true,
+      "searching": false,
+      "lengthChange": false,
+      "info": false,
+      "bPaginate": false, 
+      "bFilter": false 
+   });
 
 
-  $('#update_local_survey').on('submit', function(e) {
-    e.preventDefault();
-
-        $.ajax({
-            type: "POST",
-            url: base_url + '/store-survey-local',
-            data: $(this).serialize(),
-            dataType: 'json',
-            headers: csrf,
-            beforeSend : function() {
-                
-                _before(); 
-                 $('button[type=submit]').prop('disabled', true);                                 
-              
-            },
-            success: function(data)
-            {         
-               
-               if(data.response){
-                   toastr.success("",
-                                  data.message,
-                                { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 });
-                  $('#update_local_survey')[0].reset();
-               }else {
-                
-                  toastr.error("",
-                                  data.message,
-                                { showMethod: "slideDown", hideMethod: "slideUp", timeOut: 2000 });
-               }
-               $('button[type=submit]').prop('disabled', false);
-               JsLoadingOverlay.hide();
-
-               const Survey = new SurveyData($('input[name=es_id]').val(),$('input[name=type]').val(),$('input[name=year]').val());
-               Survey.local_data();
-             
-            },
-            error: function(xhr) 
-            { // if error occured
-
-              alert('error');
-              JsLoadingOverlay.hide();                 
-            },
+  var local_table = $("#local_table").DataTable({});
 
 
-         });
-  });
+  function load_survey_data(form,type,es_id,year){
 
-
-class SurveyData{
-
-  constructor(es_id,type,year){
-    this.es_id = es_id;
-    this.type = type;
-    this.year = year;
-  }
-
-
-  local_data(){
-
-    $.ajax({
+     $.ajax({
 
             type : 'POST',
             url   : base_url + '/get-survey-data',
-            data : { es_id : this.es_id, type : this.type, year : this.year},
+            data : { es_id : es_id, type : type, year : year},
             dataType : 'json',
             headers: csrf,
             success: function(response){
-               $('input[name=permanent]').val(response.local_permanent);
-               $('input[name=probationary]').val(response.local_probationary);
-               $('input[name=contractual]').val(response.local_contractual);
-               $('input[name=project_based]').val(response.local_project_based);
-               $('input[name=seasonal]').val(response.local_seasonal);
-               $('input[name=jo]').val(response.local_jo);
-               $('input[name=mgt]').val(response.local_mgt);
+               form.find('input[name=permanent]').val(response.local_permanent);
+               form.find('input[name=probationary]').val(response.local_probationary);
+               form.find('input[name=contractual]').val(response.local_contractual);
+               form.find('input[name=project_based]').val(response.local_project_based);
+               form.find('input[name=seasonal]').val(response.local_seasonal);
+               form.find('input[name=jo]').val(response.local_jo);
+               form.find('input[name=mgt]').val(response.local_mgt);
 
             },
             error: function(xhr) 
@@ -139,10 +88,26 @@ class SurveyData{
 
   }
 
-}
 
+  $('#update_local_survey').on('submit', function(e) {
 
+    var form  = $(this);
+    var type = form.find('input[name=type]').val();
+    var url   = form.attr("action");
+    var table = local_table;
+    _ajax_post(url,form,table,e,type);
+    load_survey_data(form,form.find('input[name=type]').val(),form.find('input[name=es_id]').val().form.find('input[name=year]').val());
+  });
 
+  $('#update_outside_survey').on('submit', function(e) {
+
+    var form  = $(this);
+    var type = form.find('input[name=type]').val();
+    var url   = '/store-survey';
+    var table = outside_table;
+    _ajax_post(url,form,table,e,type);
+    load_survey_data(form,form.find('input[name=type]').val(),form.find('input[name=es_id]').val().form.find('input[name=year]').val());
+  });
 </script>
 @endsection
 
