@@ -54,7 +54,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost/labor_localization/'),
 
-    'asset_url' => env('ASSET_URL', 'http://localhost/labor_localization/public/'),
+    'asset_url' => env('ASSET_URL', 'http://localhost/labor_localization/public'),
 
     /*
     |--------------------------------------------------------------------------

@@ -77,7 +77,7 @@
                     $(win.document.body)
                         .css( 'font-size', '10pt' )
                         .prepend(
-                            '<img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:25%;" />'
+                            '<img src="'+asset_url+'assets/images/peso_logo.png" style="position:absolute; top:20%; left:20%;height:400px;width:400px;opacity:0.2;" />'
                         );
  
                     $(win.document.body).find( 'table' )

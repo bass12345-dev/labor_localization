@@ -1,5 +1,8 @@
     <script>
         var base_url = '{{ url('') }}';
+        var asset_url = '{{ asset('') }}';
+
+  
         
     </script>
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
