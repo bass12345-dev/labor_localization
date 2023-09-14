@@ -10,7 +10,7 @@
                      "
                      style="width: 100%;"
                      >
-                     <thead class="text-nowrap bg-info text-white">
+                     <thead class="text-nowrap bg-info text-white ">
                         <tr>
                            
                            <th>Permanent</th>
@@ -24,5 +24,8 @@
                           
                         </tr>
                      </thead>
+                     <tbody>
+                        
+                     </tbody>
                   </table>
                </div>

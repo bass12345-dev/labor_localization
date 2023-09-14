@@ -193,7 +193,8 @@ class EstablishmentController extends Controller
     $year    =  $request->input('year');
     $es_id    =  $request->input('es_id');
     $local_survey = DB::table('survey')->where('es_id', $es_id)->where('year', $year)->first();
-    return response()->json($local_survey);
+    $data[0]= $local_survey;
+    return response()->json($data);
 
 
     }
