@@ -8,23 +8,6 @@
 @section('script')
 <script>
 
-
-// console.log(arr);
- // $("#local_table").DataTable({
- //    fixedColumns: true,
- //  fixedHeader: true,
- //  scrollX: true,
- //  "searching": false,
- //  "lengthChange": false,
- //  "info": false,
- //  "bPaginate": false, 
- //  "bFilter": false 
-  
-// });
-
-
-
-
   $("#local_update").click(function(e) {
     $('#update_local_data').removeAttr('hidden');
     $(this).attr('hidden','hidden');
@@ -42,17 +25,6 @@
     $('#update_outside_data').attr('hidden','hidden');
      $("#outside_update").removeAttr("hidden");
   });
-
-  var outside_table = $("#outside_table").DataTable({
-      fixedColumns: true,
-      fixedHeader: true,
-      scrollX: true,
-      "searching": false,
-      "lengthChange": false,
-      "info": false,
-      "bPaginate": false, 
-      "bFilter": false 
-   });
 
 
   var local_table = $("#local_table").DataTable({
@@ -164,35 +136,117 @@
   });
 
 
-  // function load_survey_data(form,type,es_id,year){
 
-  //    $.ajax({
+  var outside_table = $("#outside_table").DataTable({
 
-  //           type : 'POST',
-  //           url   : base_url + '/get-survey-data',
-  //           data : { es_id : es_id, type : type, year : year},
-  //           dataType : 'json',
-  //           headers: csrf,
-  //           success: function(response){
-  //              form.find('input[name=permanent]').val(response.local_permanent);
-  //              form.find('input[name=probationary]').val(response.local_probationary);
-  //              form.find('input[name=contractual]').val(response.local_contractual);
-  //              form.find('input[name=project_based]').val(response.local_project_based);
-  //              form.find('input[name=seasonal]').val(response.local_seasonal);
-  //              form.find('input[name=jo]').val(response.local_jo);
-  //              form.find('input[name=mgt]').val(response.local_mgt);
+      fixedColumns: true,
+      fixedHeader: true,
+      scrollX: true,
+      "searching": false,
+      "lengthChange": false,
+      "info": false,
+      "bPaginate": false, 
+      "bFilter": false,
 
-  //           },
-  //           error: function(xhr) 
-  //           { // if error occured
+      processing: true,
+      serverSide: true,
 
-  //             alert('error');
-             
-  //           },
+      dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'font-size', '10pt' )
+                        .prepend(
+                            '<img src="'+asset_url+'assets/images/peso_logo.png" style="position:absolute; top:20%; left:20%;height:400px;width:400px;opacity:0.2;" />'
+                        );
+ 
+                    $(win.document.body).find( 'table' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                }
+            }
+        ],
 
-  //   })
 
-  // }
+    
+      "ajax": {
+        url: base_url  + '/get-survey-data',
+        type: 'POST',
+        data : { es_id : $('#update_outside_survey').find('input[name=es_id]').val(), type : $('#update_outside_survey').find('input[name=type]').val(), year : $('#update_outside_survey').find('input[name=year]').val() },
+         "dataSrc": "",
+        headers: csrf,
+        
+      },
+    'columns': [ 
+     
+      { 
+        data: null, 
+        render: function (data, type, row) 
+        { 
+          return '<span  style="color: #000;" class="table-font-size" >'+row['outside_permanent']+'</span>'; 
+        } 
+      }, 
+        { 
+        data: null, 
+        render: function (data, type, row) 
+        { 
+          return '<span  style="color: #000;" class="table-font-size" >'+row['outside_probationary']+'</span>'; 
+        } 
+      }, 
+        { 
+        data: null, 
+        render: function (data, type, row) 
+        { 
+          return '<span  style="color: #000;" class="table-font-size" >'+row['outside_contractual']+'</span>'; 
+        } 
+      }, 
+        { 
+        data: null, 
+        render: function (data, type, row) 
+        { 
+          return '<span  style="color: #000;" class="table-font-size" >'+row['outside_project_based']+'</span>'; 
+        } 
+      }, 
+        { 
+        data: null, 
+        render: function (data, type, row) 
+        { 
+          return '<span  style="color: #000;" class="table-font-size" >'+row['outside_seasonal']+'</span>'; 
+        } 
+      }, 
+        { 
+        data: null, 
+        render: function (data, type, row) 
+        { 
+          return '<span  style="color: #000;" class="table-font-size" >'+row['outside_jo']+'</span>'; 
+        } 
+      }, 
+        { 
+        data: null, 
+        render: function (data, type, row) 
+        { 
+          return '<span  style="color: #000;" class="table-font-size" >'+row['outside_mgt']+'</span>'; 
+        } 
+      }, 
+       { 
+        data: null, 
+        render: function (data, type, row) 
+        { 
+          return '<span  style="color: #000;" class="table-font-size" >'+row['outside_permanent']+'</span>'; 
+        } 
+      }, 
+
+     
+      
+    ]
+
+
+  });
+
+
+
 
   $('#update_local_survey').on('submit', function(e) {
 
