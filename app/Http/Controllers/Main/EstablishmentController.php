@@ -200,59 +200,41 @@ class EstablishmentController extends Controller
 
 
 
+    // foreach ($survey as $key => $value) {
 
+    //         $data[] = [
 
+    //             'local_permanent'           => $row->local_permanent,
+    //             'local_probationary'        => $row->local_probationary,
+    //             'local_contractual'         => $row->local_contractual,
+    //             'local_project_based'       => $row->local_project_based,
+    //             'local_seasonal'            => $row->local_seasonal,
+    //             'local_jo'                  => $row->local_jo,
+    //             'local_mgt'                 => $row->local_mgt,
+    //             'local_total'               => $local_total,
+    //             'outside_permanent'         => $row->outside_permanent,
+    //             'outside_probationary'      => $row->outside_probationary,
+    //             'outside_contractual'       => $row->outside_contractual,
+    //             'outside_project_based'     => $row->outside_project_based,
+    //             'outside_seasonal'          => $row->outside_seasonal,
+    //             'outside_jo'                => $row->outside_jo,
+    //             'outside_mgt'               => $row->outside_mgt,
+    //             'outside_total'             =>  $outside_total,    
 
+    //         ];
+    //     # code...
+    // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-   //  foreach ($survey as $row) {
-       
-   //     $data[] = [
-
-   //              'local_permanent'           => $row->,
-   //              // 'local_probationary'        => $row->local_probationary,
-   //              // 'local_contractual'         => $row->local_contractual,
-   //              // 'local_project_based'       => $row->local_project_based,
-   //              // 'local_seasonal'            => $row->local_seasonal,
-   //              // 'local_jo'                  => $row->local_jo,
-   //              // 'local_mgt'                 => $row->local_mgt,
-   //              // 'local_total'               => $local_total,
-   //              // 'outside_permanent'         => $row->outside_permanent,
-   //              // 'outside_probationary'      => $row->outside_probationary,
-   //              // 'outside_contractual'       => $row->outside_contractual,
-   //              // 'outside_project_based'     => $row->outside_project_based,
-   //              // 'outside_seasonal'          => $row->outside_seasonal,
-   //              // 'outside_jo'                => $row->outside_jo,
-   //              // 'outside_mgt'               => $row->outside_mgt,
-   //              // 'outside_total'             =>  $outside_total,    
-
-   //          ];
-
-
-
-   //  }
-    
 
 
 
 
    // return response()->json($data);
-   //  // $data[0]= $local_survey;
-   //  // return response()->json($data);
+
+
+
+    $data[0]= $survey;
+    return response()->json($data);
 
 
     }
