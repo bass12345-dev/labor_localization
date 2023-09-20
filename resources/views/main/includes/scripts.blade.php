@@ -85,7 +85,7 @@
 
 
 
-        function _ajax_post(url,form,table,e,type){
+        function _ajax_post(url,form,e,type){
                     e.preventDefault();
 
                     $.ajax({ 
@@ -106,7 +106,7 @@
                            if(data.response){
 
                                 toast_success_alert(data.message);
-                                table.ajax.reload();
+                              
                            }else {
                             
                                 toast_error_alert(data.message);
