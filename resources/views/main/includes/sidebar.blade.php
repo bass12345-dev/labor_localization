@@ -2,10 +2,10 @@
    <div class="scroll-sidebar">
       <nav class="sidebar-nav">
          <ul id="sidebarnav">
-            <!-- <li class="nav-small-cap">
+            <li class="nav-small-cap">
                <i class="mdi mdi-dots-horizontal"></i>
-               <span class="hide-menu">Menu</span>
-            </li> -->
+               <span class="hide-menu">Labor Localization</span>
+            </li>
             <li class="sidebar-item">
                <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -42,7 +42,32 @@
                   ><span class="hide-menu">Back Up Database</span></a
                   >
             </li>
+           
+
+            <li class="nav-small-cap">
+               <i class="mdi mdi-dots-horizontal"></i>
+               <span class="hide-menu">WHIP monitoring</span>
+            </li>
             <li class="sidebar-item">
+               <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{ url('/contractors')}}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-clipboard-text"></i
+                  ><span class="hide-menu">Contractors</span></a
+                  >
+            </li>
+              <li class="sidebar-item">
+               <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{ url('/projects')}}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-clipboard-text"></i
+                  ><span class="hide-menu">Projects</span></a
+                  >
+            </li>
+
+             <li class="sidebar-item">
                <a
                   class="sidebar-link waves-effect waves-dark sidebar-link text-danger"
                   href="{{ url('/out')}}"

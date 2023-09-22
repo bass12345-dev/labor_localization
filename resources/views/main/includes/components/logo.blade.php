@@ -2,7 +2,7 @@
     <a href="{{ url('/dashboard') }}" class="logo">
 <!-- Logo icon -->
         <b class="logo-icon">
-                              Labor Localization
+            WHIP - Labor localization
         </b>
     </a>
     <!-- <a class="sidebartoggler d-none d-md-block" href="javascript:void(0)" data-sidebartype="mini-sidebar">

@@ -11,7 +11,7 @@
                                             <a href="#">Home</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">
-                                           {{ $title }}
+                                            {{ $title }}
                                         </li>
                                     </ol>
                                 </nav>

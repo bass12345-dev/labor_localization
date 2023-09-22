@@ -53,6 +53,15 @@ Route::post('/get-users', 'App\Http\Controllers\Main\UsersController@get');
 Route::post('/delete-user', 'App\Http\Controllers\Main\UsersController@delete');
 
 
+//Contractor View
+Route::get('/contractors', [App\Http\Controllers\Main\ContractorsController::class, 'index']);
+Route::get('/contractors/add', [App\Http\Controllers\Main\ContractorsController::class, 'add']);
+
+
+//Contractor POST
+Route::post('/store-contractor', 'App\Http\Controllers\Main\ContractorsController@store');
+
+
 
 
 // Back Up Database
