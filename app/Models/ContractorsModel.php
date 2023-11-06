@@ -19,8 +19,8 @@ class ContractorsModel extends Model
         'number_owner_name',
         'telephone_number',
         'email_address',
-        'status',
-        'created_on'
+        'contractor_status',
+        
 
 
 

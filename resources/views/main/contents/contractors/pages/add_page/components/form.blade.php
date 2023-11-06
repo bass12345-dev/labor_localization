@@ -2,11 +2,24 @@
    <div class="row">
       <div class="col-12">
          <div class="card">
+            <div class="alert-message mt-2">
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+               <button type="button" class="close" data-dismiss="alert">×</button>
+               {{ session('status') }}
+            </div>
+            @elseif(session('failed'))
+            <div class="alert alert-danger" role="alert">
+               <button type="button" class="close" data-dismiss="alert">×</button>
+               {{ session('failed') }}
+            </div>
+            @endif
+            </div>
             <form class="form-horizontal" method="post" action="{{ url('/store-contractor')}}" id="add_contractor_form">
                <div class="card-body">
                   <h4 class="card-title">Establishment Information</h4>
-                  <div class="alert-message"></div>
-                
+                  
+                <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                   <div class="mb-3 row">
                      <label
                         for="cono1"
@@ -20,7 +33,7 @@
                            name="c_name"
                            id="c_name"
                            placeholder="Contractor Name Here"
-                           required=""
+                           
                            />
                      </div>
                   </div>

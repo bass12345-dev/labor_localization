@@ -60,7 +60,7 @@ Route::get('/contractors/add', [App\Http\Controllers\Main\ContractorsController:
 
 //Contractor POST
 Route::post('/store-contractor', 'App\Http\Controllers\Main\ContractorsController@store');
-
+Route::post('/get-contractors', 'App\Http\Controllers\Main\ContractorsController@get');
 
 
 

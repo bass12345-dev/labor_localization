@@ -13,7 +13,7 @@
             <div class="card-body">
                <div class="table-responsive">
                   <table
-                     id="user_table"
+                     id="contractors_table"
                      class="
                      table table-striped table-bordered
                      display
